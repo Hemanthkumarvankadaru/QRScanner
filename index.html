@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhoodeva Developers</title>
+  <meta name="description"
+    content="Bhoodeva Developers - Custom Software and Web Solutions. Connect with us on social media.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --border: rgba(15, 23, 42, 0.08);
+      --text: #0f172a;
+      --muted: #475569;
+      --radius: 16px;
+    }
+
+    html,
+    body {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: radial-gradient(ellipse at top, #ffedd5 0%, #f8fafc 70%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      color: var(--text);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Neon orbs */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes floatOrb1 {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(40px, -30px) scale(1.1);
+      }
+    }
+
+    @keyframes floatOrb2 {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(-40px, 30px) scale(1.05);
+      }
+    }
+
+    body::before {
+      width: 400px;
+      height: 400px;
+      background: rgba(251, 146, 60, 0.2);
+      top: -100px;
+      left: -100px;
+      animation: floatOrb1 18s ease-in-out infinite;
+    }
+
+    body::after {
+      width: 400px;
+      height: 400px;
+      background: rgba(253, 186, 116, 0.2);
+      bottom: -100px;
+      right: -100px;
+      animation: floatOrb2 22s ease-in-out infinite;
+    }
+
+    @keyframes cardPop {
+      from {
+        opacity: 0;
+        transform: scale(0.96) translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
+      overflow: hidden;
+      animation: cardPop 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* Top gradient accent line */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ea580c, #f97316, #16a34a);
+    }
+
+    /* --- LOGO --- */
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes floatLogo {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .logo-box {
+      width: 160px;
+      height: 100px;
+      background: #ffffff;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.04);
+      animation: floatLogo 2.0s ease-in-out infinite;
+    }
+
+    .logo-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* --- TITLE --- */
+    .company-name {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ea580c 0%, #15803d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.4rem;
+    }
+
+    .company-tagline {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    /* --- DIVIDER --- */
+    .divider {
+      height: 2px;
+      background: var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    /* --- LINKS --- */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.1rem;
+      background: rgba(15, 23, 42, 0.03);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      border-radius: 14px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-btn:hover {
+      background: rgba(15, 23, 42, 0.06);
+      border-color: rgba(15, 23, 42, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .link-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Left accent bar on hover */
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: 3px 0 0 3px;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 2;
+    }
+
+    /* Sweep reflection sheen */
+    .link-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.4) 50%,
+          rgba(255, 255, 255, 0) 100%);
+      transform: skewX(-25deg);
+      transition: 2s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .link-btn:hover::after {
+      left: 150%;
+    }
+
+    .link-btn:active {
+      transform: translateY(0);
+    }
+
+    .link-btn:hover::before {
+      opacity: 1;
+    }
+
+    /* Brand accent colours */
+    .btn-insta::before {
+      background: linear-gradient(180deg, #db600e, #d24917, #dc2743, #cc2366, #bc1888);
+    }
+
+    .btn-fb::before {
+      background: #1877f2;
+    }
+
+    .btn-x::before {
+      background: #e7e7e7;
+    }
+
+    .btn-yt::before {
+      background: #ff0000;
+    }
+
+    .btn-web::before {
+      background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    }
+
+    .btn-location::before {
+      background: linear-gradient(135deg, #ef4444, #f43f5e);
+    }
+
+    .btn-project::before {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+
+    .icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-wrap svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+
+    .icon-wrap svg.stroke {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+    }
+
+    .icon-insta {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+
+    .icon-fb {
+      background: #1877f2;
+    }
+
+    .icon-x {
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .icon-yt {
+      background: #ff0000;
+    }
+
+    .icon-web {
+      background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    }
+
+    .icon-location {
+      background: linear-gradient(135deg, #ef4444, #f43f5e);
+    }
+
+    .icon-project {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+
+    .link-label {
+      flex: 1;
+      font-weight: 600;
+    }
+
+    .arrow {
+      color: rgba(0, 0, 0, 0.25);
+      font-size: 1.5rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .link-btn:hover .arrow {
+      color: rgba(15, 23, 42, 0.7);
+      transform: translateX(3px);
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .link-btn:nth-child(1) {
+      animation: fadeUp 0.4s 0.1s ease both;
+    }
+
+    .link-btn:nth-child(2) {
+      animation: fadeUp 0.4s 0.18s ease both;
+    }
+
+    .link-btn:nth-child(3) {
+      animation: fadeUp 0.4s 0.26s ease both;
+    }
+
+    .link-btn:nth-child(4) {
+      animation: fadeUp 0.4s 0.34s ease both;
+    }
+
+    .link-btn:nth-child(5) {
+      animation: fadeUp 0.4s 0.42s ease both;
+    }
+
+    .link-btn:nth-child(6) {
+      animation: fadeUp 0.4s 0.5s ease both;
+    }
+
+    .link-btn:nth-child(7) {
+      animation: fadeUp 0.4s 0.58s ease both;
+    }
+
+    /* Footer */
+    .footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 1.5rem;
+      font-size: 0.78rem;
+      color: rgba(15, 23, 42, 0.4);
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.25rem;
+        border-radius: 22px;
+      }
+
+      .company-name {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        max-width: 600px;
+        padding: 3rem 2.5rem;
+      }
+
+      .company-name {
+        font-size: 1.85rem;
+      }
+
+      .logo-box {
+        width: 180px;
+        height: 110px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <div class="logo-box">
+        <img src="logo.png" alt="Bhoodeva Developers Logo"
+          onerror="this.parentElement.innerHTML='<span style=\'font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#f97316,#16a34a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;\'>BD</span>'">
+      </div>
+    </div>
+
+    <!-- Company Name -->
+    <h1 class="company-name">Bhoodeva Developers</h1>
+    <p class="company-tagline">Real Estates &amp; Property Developers</p>
+
+    <div class="divider"></div>
+
+    <!-- Social Links -->
+    <nav class="links" aria-label="Social media links">
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/bhoodeva_developers/?hl=en" class="link-btn btn-insta" target="_blank"
+        rel="noopener noreferrer">
+        <div class="icon-wrap icon-insta">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+          </svg>
+        </div>
+        <span class="link-label">Instagram</span>
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/profile.php?id=61589466494713" class="link-btn btn-fb" target="_blank"
+        rel="noopener noreferrer">
+        <div class="icon-wrap icon-fb">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg>
+        </div>
+        <span class="link-label">Facebook</span>
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- X (Twitter) -->
+      <a href="https://x.com/BhoodevaDevelop" class="link-btn btn-x" target="_blank" rel="noopener noreferrer">
+        <div class="icon-wrap icon-x">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </div>
+        <span class="link-label">X (Twitter)</span>
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@Bhoodeva_Developers" class="link-btn btn-yt" target="_blank"
+        rel="noopener noreferrer">
+        <div class="icon-wrap icon-yt">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.525 3.545 12 3.545 12 3.545s-7.525 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.025 0 12 0 12s0 3.975.502 5.837a3.003 3.003 0 002.11 2.11c1.863.508 9.388.508 9.388.508s7.525 0 9.388-.508a3.003 3.003 0 002.11-2.11C24 15.975 24 12 24 12s0-3.975-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          </svg>
+        </div>
+        <span class="link-label">YouTube</span>
+        <span class="arrow">→</span>
+      </a>
+
+      <!--Website -->
+      <a href="https://bhoodevadevelopers.com/" class="link-btn btn-web" target="_blank" rel="noopener noreferrer">
+        <div class="icon-wrap icon-web">
+          <svg viewBox="0 0 24 24" class="stroke">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 000 20M12 2a14.5 14.5 0 010 20M2 12h20" />
+          </svg>
+        </div>
+        <span class="link-label">Website</span>
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- carpenter office location -->
+      <a href="https://maps.app.goo.gl/bTMbs9w5RjQTxs7e9" class="link-btn btn-location" target="_blank"
+        rel="noopener noreferrer">
+        <div class="icon-wrap icon-location">
+          <svg viewBox="0 0 24 24" class="stroke">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </div>
+        <span class="link-label">Corporate office Location</span>
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- project  location  -->
+      <a href="https://maps.app.goo.gl/cJeqNG56wwGma1HG6" class="link-btn btn-project" target="_blank"
+        rel="noopener noreferrer">
+        <div class="icon-wrap icon-project">
+          <svg viewBox="0 0 24 24" class="stroke">
+            <path d="M4 22V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v18" />
+            <path d="M9 6h6M9 10h6M9 14h6" />
+            <path d="M11 18h2" />
+          </svg>
+        </div>
+        <span class="link-label">Project Location</span>
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+  </div>
+
+  <p class="footer">&copy; 2026 Bhoodeva Developers. All rights reserved.</p>
+
+</body>
+
+</html>
